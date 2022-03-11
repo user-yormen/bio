@@ -21,7 +21,6 @@
         <v-col cols="12" class="pad">
           <div class="first" id="projects">
             <v-row>
-              
               <v-col cols="12">
                 
                 <div class="child bgColor1">
@@ -65,62 +64,48 @@
                     <v-icon>mdi-arrow-right</v-icon>
                   </v-btn>
                 </div>
-
-
               </v-col>
 
               <v-col cols="12" class="mt-10">
                 <div class="child1">
-                  <h3 class="red--text text darken mt-4">Years of Experience</h3>
+                  <h3 class="red--text text darken mt-2">Years of Experience</h3>
                   <h1 class="white--text mt-4 number">5+</h1>
                 </div>
               </v-col>
-             
-                  <v-col cols="12" class="mt-12">
-                    <h4 class="red--text text darken mt-4">Skills</h4>
-                    <h2 class="red--text text darken mt-4">Languages </h2>
-                    <!-- <div>
-                        <v-tabs
-                          v-model="tab" centered icons-and-text>
-                          <v-tabs-slider></v-tabs-slider>
-                          <v-tab href="#tab-1">
-                            Java
-                            <v-img src="images/java.svg" contain height="100"></v-img>
-                          </v-tab>
 
-                          <v-tab href="#tab-2">
-                            Groovy
-                            <v-img src="images/groovy.svg" contain height="100"></v-img>
-                          </v-tab>
+              <v-col cols="12" class="mt-10">
+                <!-- <h4 class="red--text text darken mt-2">Skills Set</h4> -->
+                <h2 class="red--text text darken mt-4">Skill Set </h2>
+                <div class="mt-4">
+                    <v-tabs v-model="tab" centered icons-and-text>
+                      <v-tabs-slider></v-tabs-slider>
+                      
+                      <v-tab v-for="item in items" :key="item">
+                      {{ item }}
+                      </v-tab>
+                    </v-tabs>
+                    
+                    <v-tabs-items v-model="tab">
+                        <v-tab-item v-for="text in texts" :key="text" >
+                          <v-row align-v="text-center" class="middle">
+                            <v-div v-for="stack in text" :key="stack">
+                              <v-tab class="mt-4">
+                                <v-col cols="12" >
+                                  {{ stack }}
+                                  <img :src="'images/' + stack + '.svg'" contain height="40">
+                                </v-col>
+                                
+                              </v-tab>
+                            </v-div>
+                          </v-row>
+                        </v-tab-item>
+                      </v-tabs-items>
+                  </div>
+              </v-col>
 
-                          <v-tab href="#tab-3">
-                            Javascript
-                            <v-img src="images/javascript.svg" contain height="100"></v-img>
-                          </v-tab>
-                        </v-tabs>
+              <v-col cols="12">
 
-                        <v-tabs-items v-model="tab">
-                          <v-tab-item v-for="i in 3" :key="i" :value="'tab-' + i">
-                            <v-card flat>
-                              <v-card-text>{{ text }}</v-card-text>
-                            </v-card>
-                          </v-tab-item>
-                        </v-tabs-items>
-                      </div> -->
-
-                      <div>
-                        <v-tab v-for="item in items" :key="item">
-                          {{ item }}
-                            <v-tabs-items v-model="tab">
-                            <v-tab-item v-for="i in 3" :key="i" :value="'tab-' + i">
-                              <v-card flat>
-                                <v-card-text>{{ text }}</v-card-text>
-                              </v-card>
-                            </v-tab-item>
-                          </v-tabs-items>
-                        </v-tab>
-                      </div>
-                  </v-col>
+              </v-col>
                
             </v-row>
           </div>
@@ -139,26 +124,24 @@
     components: {
       Navbar
     },
-    // data () {
-    //   return {
-    //     tab: null,
-    //     text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    //   }
-    // },
     data(){
       return{
-        tab:[
-            'fullstack', 'backend', 'frontend', 'sys-admin'
+        tab: null,
+        items:[
+            'fullstack', 'backend', 'frontend', 'sysadmin'
         ],
-        text: {
+        texts: {
           fullstack: [
             'apache', 'docker', 'flutter', 'git', 'grails', 'groovy', 'heroku', 'hibernate', 'java', 'javascript', 'keycloak', 'linux', 'mysql', 'nginx', 'spring', 'tomcat', 'windows',
+          ],
+          backend: [
+            'java', 'groovy', 'grails', 'spring', 'hibernate'
           ],
           frontend:[
             'vue', 'flutter'
           ],
-          backend: [
-            'java', 'groovy', 'grails', 'spring'
+          sysadmin: [
+            'apache', 'docker', 'git', 'heroku', 'keycloak', 'linux', 'mysql', 'nginx', 'spring', 'tomcat', 'windows',
           ]
         }
       }
@@ -261,5 +244,8 @@
   h1.number{
     font-size: 50px;
     font-weight: bold;
+  }
+  .middle{
+    display: inline-flex;
   }
 </style>

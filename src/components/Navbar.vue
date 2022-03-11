@@ -27,7 +27,10 @@ export default {
       element.scrollIntoView({
         behavior: "smooth"
       });
-    }
+    },
+    // loadImageWithExtension(image, ext) {
+      // return require('./images/' + image + '.' + ext)
+    // }
   }
 }
 </script>
